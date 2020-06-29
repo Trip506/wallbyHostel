@@ -19,7 +19,8 @@ export default {
 			asset: this.$store.state.assetRoot2,
 			datepicker: false,
 			daypicker: false,
-			date: ""
+			date: "",
+			hellothisisatest: ''
 		};
 	},
 	components: {
