@@ -29,12 +29,6 @@ export const Mixin = {
                     to: "/location"
                 },
                 {
-                  
-                    title: "Trips and Events",
-                    to: "/experienceSaranda"
-                },
-
-                {
                 
                     title: "Contact",
                     to: "/contact"

@@ -19,7 +19,9 @@
 								:class="this.resize.text+ ' font-weight-bold ma-5 pa-5'"
 								style="text-align:center; "
 							></div>
+							<nuxt-link to="/contact">
 							<v-btn class="black--text" color="secondary lighten-1">{{props.section2_buttonText}}</v-btn>
+							</nuxt-link>
 						</div>
 						<br />
 					</v-layout>

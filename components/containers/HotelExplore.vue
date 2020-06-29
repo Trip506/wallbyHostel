@@ -20,98 +20,9 @@
 										:width="this.resize.svgSize"
 										:src="asset + props.image5_logo.path"
 									></v-img>
-									<p
-										:class="this.resize.subtitle"
-									>{{props.image5_text}}</p>
+									<p :class="this.resize.subtitle">{{props.image5_text}}</p>
 								</div>
-								<v-container grid-listlg>
-									<v-layout row wrap justify-space-around>
-										<v-flex md3 xs10>
-											<v-hover>
-												<v-card height="100%" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
-													<!--<nuxt-link style="text-decoration:none; color: primary;" :to="'/airbnb/'+props.slug">
-													<v-img :src="$store.state.assetRoot + props.image.path" max-height="10cm"></v-img>-->
-
-													<v-img
-														height="200"
-														src="https://www.nps.gov/olym/planyourvisit/images/Slideshow-84.jpg?maxwidth=1200&maxheight=1200&autorotate=false"
-													>
-														<template v-slot:placeholder>
-															<v-layout fill-height align-center justify-center ma-0>
-																<v-progress-circular indeterminate color="primary"></v-progress-circular>
-															</v-layout>
-														</template>
-														<v-layout fill-height align-end justify-center ma-0>
-															<span
-																class="d-flex"
-																style="background-color:#383838; opacity:0.7; width:100%; word-break: normal;"
-															>
-																<v-card-title class="white--text" style="word-break: normal;" color="white">Hiking</v-card-title>
-															</span>
-														</v-layout>
-													</v-img>
-													<!--</nuxt-link>-->
-												</v-card>
-											</v-hover>
-										</v-flex>
-										<v-flex lg3 xs10>
-											<v-hover>
-												<v-card height="100%" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
-													<!--<nuxt-link style="text-decoration:none; color: primary;" :to="'/airbnb/'+props.slug">
-													<v-img :src="$store.state.assetRoot + props.image.path" max-height="10cm"></v-img>-->
-
-													<v-img
-														height="200"
-														src="https://upload.wikimedia.org/wikipedia/commons/7/77/Deepsea.JPG"
-													>
-														<template v-slot:placeholder>
-															<v-layout fill-height align-center justify-center ma-0>
-																<v-progress-circular indeterminate color="primary"></v-progress-circular>
-															</v-layout>
-														</template>
-														<v-layout fill-height align-end justify-center ma-0>
-															<span
-																class="d-flex"
-																style="background-color:#383838; opacity:0.7; width:100%; word-break: normal;"
-															>
-																<v-card-title class="white--text" style="word-break: normal;" color="white">Fishing</v-card-title>
-															</span>
-														</v-layout>
-													</v-img>
-													<!--</nuxt-link>-->
-												</v-card>
-											</v-hover>
-										</v-flex>
-										<v-flex lg3 xs10>
-											<v-hover>
-												<v-card height="100%" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
-													<!--<nuxt-link style="text-decoration:none; color: primary;" :to="'/airbnb/'+props.slug">
-													<v-img :src="$store.state.assetRoot + props.image.path" max-height="10cm"></v-img>-->
-
-													<v-img
-														height="200"
-														src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Discover_Scuba_Diving_--_St._Croix%2C_US_Virgin_Islands.jpg"
-													>
-														<template v-slot:placeholder>
-															<v-layout fill-height align-center justify-center ma-0>
-																<v-progress-circular indeterminate color="primary"></v-progress-circular>
-															</v-layout>
-														</template>
-														<v-layout fill-height align-end justify-center ma-0>
-															<span
-																class="d-flex"
-																style="background-color:#383838; opacity:0.7; width:100%; word-break: normal;"
-															>
-																<v-card-title class="white--text" style="word-break: normal;" color="white">Diving</v-card-title>
-															</span>
-														</v-layout>
-													</v-img>
-													<!--</nuxt-link>-->
-												</v-card>
-											</v-hover>
-										</v-flex>
-									</v-layout>
-								</v-container>
+								<attractions :props="cards"></attractions>
 							</v-layout>
 						</v-layout>
 					</v-container>
@@ -126,12 +37,14 @@ import { Mixin } from "~/mixins/windowSize.js";
 
 export default {
 	mixins: [Mixin],
-	props: ["props"],
+	props: ["props", "cards"],
 	data() {
 		return {
-			
 			asset: this.$store.state.assetRoot2
 		};
 	},
+	components: {
+		attractions: () => import("@/components/wallaby/attractions")
+	}
 };
 </script>

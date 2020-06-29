@@ -1,6 +1,7 @@
 export default async function ({ store, $axios, route }) {
     let singleton = "home";
     let singleton2 = "details";
+    let singleton3 = "saranda";
     
     if (route.params.id) {
 
@@ -44,9 +45,30 @@ export default async function ({ store, $axios, route }) {
                 "?token=" +
                 process.env.pagesToken,
              );
+             let request5 = await $axios.post(
+                store.state.webRoot2 +
+                "/api/singletons/get/" +
+                singleton3 +
+                "?token=" +
+                process.env.pagesToken,
+                {
+                    fields: {
+                        imageUrls: 1,
+                        title: 1,
+                        totalScore: 1,
+                        categoryName: 1,
+                        url: 1,
+                        slug: 1,
+                        reviewsCount: 1,
+                        location: 1
+                    },
+                    limit: 4,
+                    sort: { imageUrls: -1 }
+                }
+             );
  
             // return store.commit("setPageData", [request3, request4])
-             return store.commit("setPageData", [request3.data, request4.data])
+            return store.commit("setPageData", [request3.data, request4.data, request5.data])
         }
 
         catch (e) {

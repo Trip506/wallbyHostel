@@ -1,13 +1,12 @@
 		<template >
 	<section id="Bar">
 		<v-container grid-list-lg>
-			<p :class="this.resize.headline">The funnest Activities in {{$store.state.city}}</p>
 			<v-responsive class="mx-auto mb-12" width="56">
 			</v-responsive>
 			<v-layout row wrap mt-5>
 				<v-container grid-list-lg>
 					<v-layout row wrap>
-						<v-flex xs12 sm6 md4 lg3 v-for="(item, index) in props.slice(0,4)" :key="index">
+						<v-flex xs12 sm6 md4 lg3 v-for="(item, index) in props" :key="index">
 							<CardBeach :props="item"></CardBeach>
 						</v-flex>
 					</v-layout>

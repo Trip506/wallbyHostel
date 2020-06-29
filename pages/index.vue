@@ -3,7 +3,7 @@
 		<HotelSplash :props="index"></HotelSplash>
 		<HotelAbout :props="index"></HotelAbout>
 		<HotelServices :props="index"></HotelServices>
-		<HotelExplore :props="index"></HotelExplore>
+	<!--	<HotelExplore :props="index" :cards="cards"></HotelExplore>-->
 		<HotelSocial :props="index"></HotelSocial>
 		<HotelLocation :props="map"></HotelLocation>
 	</div>
@@ -16,6 +16,7 @@ export default {
 		return {
 			index: this.$store.state.pageData[0],
 			map: this.$store.state.pageData[1],
+			cards: this.$store.state.pageData[2],
 			asset: this.$store.state.assetRoot2,
 			datepicker: false,
 			daypicker: false,
