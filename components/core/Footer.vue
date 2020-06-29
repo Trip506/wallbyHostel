@@ -24,9 +24,9 @@
 				</v-card>
 			</v-dialog>
 		<footer class="v-footer v-sheet v-sheet--tile theme--dark v-footer--padless" data-booted="true">
-			<v-container>
-				<v-layout row wrap justify-space-between>
-					<v-flex lg3>
+			<v-container grid-list-lg>
+				<v-layout row wrap justify-center>
+					<v-flex lg3 xs10>
 						<div align="center">
 							<v-btn outlined color="white" width="100%" @click="footerDatepicker = !footerDatepicker">Arrival date</v-btn>
 						</div>
@@ -37,7 +37,7 @@
 							<v-date-picker color="secondary lighten-1" v-model="footerDate" light :reactive="true"></v-date-picker>
 						</v-menu>
 					</v-flex>
-					<v-flex lg3>
+					<v-flex lg3 xs10>
 						<div align="center">
 							<v-btn outlined color="white" width="100%" @click="footerDaypicker = !footerDaypicker">No of nights</v-btn>
 						</div>
@@ -54,7 +54,7 @@
 							</v-list>
 						</v-menu>
 					</v-flex>
-					<v-flex lg3>
+					<v-flex lg3 xs10>
 						<div align="center">
 							<v-btn color="#dfd269" width="100%" @click="footerBook = true">
 								<span class="black--text font-weight-bold">Book now</span>
