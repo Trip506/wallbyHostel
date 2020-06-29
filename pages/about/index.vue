@@ -4,7 +4,7 @@
 		<Splash :props="about"></Splash>
 		<BlockImage :props="about"> </BlockImage>
 		<ImageBlock :props="about"> </ImageBlock>
-	
+	{{saranda}}
 
 
 	
@@ -26,6 +26,7 @@ export default {
 		
 			about: this.$store.state.pageData[0],
 			map: this.$store.state.pageData[1],
+			saranda: this.$store.state.pageData[2],
 			asset: this.$store.state.assetRoot2
 		};
 	},
