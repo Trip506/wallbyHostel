@@ -2,9 +2,12 @@
     <div>
         		<v-container fluid fill-height class="ma-0 pa-0">
 			<v-layout row wrap>
+				<!--IMAGE LEFT-->
 				<v-flex lg6>
 					<v-img height="100%" :src="asset + props.image8.path"></v-img>
 				</v-flex>
+				<!--END-->
+				<!--BLOCK RIGHT WITH TEXT-->
 				<v-flex lg6>
 					<div style="background-color: #636f61; height: 100%;">
 						<v-container>
@@ -26,6 +29,7 @@
 						</v-container>
 					</div>
 				</v-flex>
+				<!--END-->
 			</v-layout>
 		</v-container>
     </div>

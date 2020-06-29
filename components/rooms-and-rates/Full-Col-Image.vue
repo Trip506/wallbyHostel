@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<!--FULL SIZE IMAGE-->
 		<v-container fluid fill-height class="ma-0 pa-0">
 			<v-layout row wrap fill-height>
 				<v-img
@@ -8,6 +9,7 @@
 				></v-img>
 			</v-layout>
 		</v-container>
+		<!--END-->
 	</div>
 </template>
 

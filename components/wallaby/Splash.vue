@@ -1,6 +1,6 @@
 <template>
     <div>
-  
+   <!--ROOMS AN RATES SPLASH WITH IMAGE LOGO AND TEXT-->
         		<v-container fluid fill-height class="ma-0 pa-0">
 			<v-layout row wrap fill-height>
 				<v-img
@@ -26,6 +26,7 @@
 				</v-img>
 			</v-layout>
 		</v-container>
+		<!--END-->
     </div>
 </template>
 

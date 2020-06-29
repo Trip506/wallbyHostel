@@ -1,6 +1,6 @@
 <template>
     <div>
-  
+  <!--ROOMS AN RATES SPLASH WITH IMAGE LOGO AND TEXT-->
         		<v-container fluid fill-height class="ma-0 pa-0">
 			<v-layout row wrap fill-height>
 				<v-img
@@ -17,7 +17,7 @@
 										:src="asset + props.image1_logo.path"
 									></v-img>
 									<p
-										:class="[$vuetify.breakpoint.smAndDown ? 'display-1' : 'display-3']  + ' font-weight-bold'"
+										:class="this.resize.headline + ' font-weight-bold'"
 										:style="[$vuetify.breakpoint.smAndDown ? 'line-height: 40px;' : 'line-height: 80px;']  +'text-align:center;' "
 									>{{props.image1_text}}</p>
 								</div>
@@ -27,6 +27,7 @@
 				</v-img>
 			</v-layout>
 		</v-container>
+		<!--END-->
     </div>
 </template>
 
