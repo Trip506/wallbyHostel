@@ -54,27 +54,40 @@
 					x-large
 					color="secondary lighten-2"
 					class="white--text"
-					@click="submit_post, dialog=true"
+					@click="submit_post"
 					:disabled="!valid"
 				>Send</v-btn>
 				<!-- <v-btn @click="clear">clear</v-btn> -->
 			</v-form>
 		</v-container>
 		<v-dialog v-model="dialog" max-width="300" transition="dialog-transition">
-				<v-card>
+			<v-card>
+				<div v-if="this.valid==true">
 					<v-card-title primary-title>
-						<p>Thanks for contacting us! <br> You will hear from us soon.</p>
+						<p>
+							Thanks for contacting us!
+							<br />You will hear from us soon.
+						</p>
 					</v-card-title>
 					<v-card-actions>
 						<v-layout justify-center>
 							<nuxt-link to="/">
-							<v-btn color="secondary lighten-1">Return to home</v-btn>
+								<v-btn color="secondary lighten-1" @click="clear">Return to home</v-btn>
 							</nuxt-link>
 						</v-layout>
 					</v-card-actions>
 					<br />
-				</v-card>
-			</v-dialog>
+				</div>
+				<div v-else>
+					<v-card-title primary-title>
+						<p>
+							Semething went wrong!
+							<br />Please try again.
+						</p>
+					</v-card-title>
+				</div>
+			</v-card>
+		</v-dialog>
 	</div>
 </template>
 		
@@ -109,7 +122,7 @@ export default {
 
 	methods: {
 		async submit_post() {
-			if (1 == 1) {
+			if (this.valid == true) {
 				// Native form submission is not yet supported
 				this.error = 0;
 				let form = "contact";
@@ -128,13 +141,10 @@ export default {
 							checkbox: this.checkbox
 						}
 					},
-					(this.name = ""),
-					(this.email = ""),
-					(this.message = ""),
-					(this.select = null),
-					(this.checkbox = false)
+					(this.dialog = true),
 				);
 			} else {
+				(this.dialog = true),
 				this.error = 1;
 			}
 		},
