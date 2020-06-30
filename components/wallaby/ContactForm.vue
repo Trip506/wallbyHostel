@@ -2,11 +2,29 @@
 	<div>
 		<v-container>
 			<v-form v-model="valid" ref="form" lazy-validation>
-				<v-text-field label="Your Name" v-model="name" :rules="nameRules" :counter="10" value light outlined required></v-text-field>
-				<v-text-field label="Your Email" v-model="email" :rules="emailRules" value light outlined required></v-text-field>
+				<v-text-field
+					label="Your Name"
+					v-model="name"
+					:rules="nameRules"
+					:counter="20"
+					value
+					light
+					outlined
+					required
+				></v-text-field>
+				<v-text-field
+					label="Your Email"
+					v-model="email"
+					:rules="emailRules"
+					value
+					light
+					outlined
+					required
+				></v-text-field>
 				<!-- <v-text-field type="password" label="" v-model="password" :rules="emailRules" required></v-text-field> -->
-				<v-select light
-                outlined
+				<v-select
+					light
+					outlined
 					label="Dorm Type"
 					v-model="select"
 					:items="items"
@@ -14,27 +32,49 @@
 					required
 				></v-select>
 
-				<v-textarea label="Your message to us" v-model="message" auto-grow value light outlined required></v-textarea>
+				<v-textarea
+					label="Your message to us"
+					v-model="message"
+					auto-grow
+					value
+					light
+					outlined
+					required
+				></v-textarea>
 
-				<v-checkbox light
+				<v-checkbox
+					light
 					label="I agree for my personal information given here to be store on the site database"
 					v-model="checkbox"
 					:rules="[v => !!v || 'You must agree to continue!']"
 					required
 				></v-checkbox>
 
-				<nuxt-link to="/lol">
-					<v-btn
-						x-large
-						color="secondary lighten-2"
-						class="white--text"
-						@click="submit"
-						:disabled="!valid"
-					>Send</v-btn>
-					<!-- <v-btn @click="clear">clear</v-btn> -->
-				</nuxt-link>
+				<v-btn
+					x-large
+					color="secondary lighten-2"
+					class="white--text"
+					@click="submit_post, dialog=true"
+					:disabled="!valid"
+				>Send</v-btn>
+				<!-- <v-btn @click="clear">clear</v-btn> -->
 			</v-form>
 		</v-container>
+		<v-dialog v-model="dialog" max-width="300" transition="dialog-transition">
+				<v-card>
+					<v-card-title primary-title>
+						<p>Thanks for contacting us! <br> You will hear from us soon.</p>
+					</v-card-title>
+					<v-card-actions>
+						<v-layout justify-center>
+							<nuxt-link to="/">
+							<v-btn color="secondary lighten-1">Return to home</v-btn>
+							</nuxt-link>
+						</v-layout>
+					</v-card-actions>
+					<br />
+				</v-card>
+			</v-dialog>
 	</div>
 </template>
 		
@@ -50,7 +90,7 @@ export default {
 		name: "",
 		nameRules: [
 			v => !!v || "Name is required",
-			v => (v && v.length <= 10) || "Name must be less than 10 characters"
+			v => (v && v.length <= 20) || "Name must be less than 10 characters"
 		],
 		email: "",
 		emailRules: [
@@ -61,20 +101,41 @@ export default {
 		],
 		select: null,
 		items: ["8 Bed Mixed", "4 Bed Mixed", "5 Bed Female", "Private"],
-        checkbox: false,
-        message: ""
+		checkbox: false,
+		message: "",
+		error: 0,
+		dialog: false
 	}),
 
 	methods: {
-		submit() {
-			if (this.$refs.form.validate()) {
+		async submit_post() {
+			if (1 == 1) {
 				// Native form submission is not yet supported
-				axios.post("/api/submit", {
-					name: this.name,
-					email: this.email,
-					select: this.select,
-					checkbox: this.checkbox
-				});
+				this.error = 0;
+				let form = "contact";
+				const ip = await this.$axios.$post(
+					this.$store.state.webRoot2 +
+						"/api/forms/submit/" +
+						form +
+						"?token=" +
+						this.$store.state.contactToken,
+					{
+						form: {
+							name: this.name,
+							email: this.email,
+							select: this.select,
+							messaage: this.message,
+							checkbox: this.checkbox
+						}
+					},
+					(this.name = ""),
+					(this.email = ""),
+					(this.message = ""),
+					(this.select = null),
+					(this.checkbox = false)
+				);
+			} else {
+				this.error = 1;
 			}
 		},
 		clear() {

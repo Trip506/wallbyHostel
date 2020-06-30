@@ -18,6 +18,7 @@ export const state = () => ({
 
     //Openweathermap
     weatherToken: 'cdb5d1ad4220610c588be2ecfe1a4671',
+    contactToken: 'd300d1df15baa7cf958afa901faec2',
 
     //i18n
 
