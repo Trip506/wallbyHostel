@@ -1,7 +1,15 @@
 <template lang="">
     <div>
-        <v-container fluid fill-height class="ma-0 pa-0">
-			<v-img :style="'height:'+(this.windowSize.y)*2/3+'px'">
+        <v-container fluid class='ma-0 pa-0'>
+					<v-layout row wrap px-5 py-5>
+				<v-flex xs12>
+				<div class='display-2'>
+				Wallaby Hostel, Rruga Pandeli Bocari 9701, Saranda, Albania
+					 </div>
+
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap fill-height>
 				<div style="width: 100%">
 					<iframe
 						width="100%"
@@ -13,8 +21,9 @@
 						marginwidth="0"
 					></iframe>
 				</div>
-				<br />
-			</v-img>
+			</v-layout>
+		
+		
 		</v-container>
     </div>
 </template>

@@ -17,18 +17,18 @@
 					</v-card-text>
 					<v-card-actions>
 						<v-layout justify-center>
-							<v-btn color="secondary lighten-1">Book Now</v-btn>
+							<v-btn x-large color="secondary lighten-1">Book Now</v-btn>
 						</v-layout>
 					</v-card-actions>
 					<br />
 				</v-card>
 			</v-dialog>
-		<footer class="v-footer v-sheet v-sheet--tile theme--dark v-footer--padless" data-booted="true">
+		<footer class="v-footer v-sheet primary " >
 			<v-container grid-list-lg>
-				<v-layout row wrap justify-center>
+				<v-layout row wrap justify-center my-5>
 					<v-flex lg3 xs10>
 						<div align="center">
-							<v-btn outlined color="white" width="100%" @click="footerDatepicker = !footerDatepicker">Arrival date</v-btn>
+							<v-btn x-large outlined color="white" width="100%" @click="footerDatepicker = !footerDatepicker">Arrival date</v-btn>
 						</div>
 						<v-menu close-on-click="false" bottom v-model="footerDatepicker">
 							<template v-slot:activator="{ on }">
@@ -39,7 +39,7 @@
 					</v-flex>
 					<v-flex lg3 xs10>
 						<div align="center">
-							<v-btn outlined color="white" width="100%" @click="footerDaypicker = !footerDaypicker">No of nights</v-btn>
+							<v-btn x-large outlined color="white" width="100%" @click="footerDaypicker = !footerDaypicker">No of nights</v-btn>
 						</div>
 						<v-menu close-on-click="false" bottom v-model="footerDaypicker">
 							<template v-slot:activator="{ on }">
@@ -48,7 +48,7 @@
 							<v-list>
 								<v-list-item v-for="(item, index) in 7" :key="index">
 									<v-list-item-title>
-										<v-btn color="white" width="100%" @click="footerNights = index+1" text>{{ index+1 }}</v-btn>
+										<v-btn  color="white" width="100%" @click="footerNights = index+1" text>{{ index+1 }}</v-btn>
 									</v-list-item-title>
 								</v-list-item>
 							</v-list>
@@ -56,7 +56,7 @@
 					</v-flex>
 					<v-flex lg3 xs10>
 						<div align="center">
-							<v-btn color="#dfd269" width="100%" @click="footerBook = true">
+							<v-btn x-large color="#dfd269" width="100%" @click="footerBook = true">
 								<span class="black--text font-weight-bold">Book now</span>
 							</v-btn>
 						</div>
@@ -65,7 +65,7 @@
 			</v-container>
 			<v-layout row wrap>
 				<v-flex lg6>
-					<div style="background-color: #000000;">
+					<div class="accent">
 						<v-container
 							:style="'height:'+[$vuetify.breakpoint.smAndDown ? ' auto;' : (this.windowSize.y)*2/3]+'px;'"
 						>
@@ -84,9 +84,9 @@
 							</v-container>
 						</v-container>
 					</div>
-				</v-flex>
+				</v-flex> 
 				<v-flex lg6>
-					<div style="background-color: #b7b181;">
+					<div class="info">
 						<v-container
 							:style="'height:'+[$vuetify.breakpoint.smAndDown ? ' auto;' : (this.windowSize.y)*2/3]+'px;'"
 						>

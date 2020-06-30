@@ -10,19 +10,27 @@
 					<v-container fill-height>
 						<v-layout align-center justify-center row fill-height>
 							<v-layout column class="white--text text-center">
-								<div class="text">
+							
 									<v-img
 										style="margin: auto;"
-										:width="[$vuetify.breakpoint.smAndDown ? '70%' : '60%']"
+										:width="[$vuetify.breakpoint.smAndDown ? '40%' : '30%']"
 										:src="asset + props.image1_logo.path"
 									></v-img>
+									<v-card>
 									<p
 										:class="this.resize.headline + ' font-weight-bold'"
 										:style="[$vuetify.breakpoint.smAndDown ? 'line-height: 40px;' : 'line-height: 80px;']  +'text-align:center;' "
-									>{{props.image1_text}}</p>
-								</div>
+									>{{props.title}}</p>
+										
+									</v-card>
+								
+								
 							</v-layout>
 						</v-layout>
+								<v-card class='display-1'>
+									
+								
+									</v-card>
 					</v-container>
 				</v-img>
 			</v-layout>

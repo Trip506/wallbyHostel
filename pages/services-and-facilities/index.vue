@@ -4,25 +4,38 @@
 		<!--IMAGE WITH LOGO AND TEXT-->
 		<v-container fluid fill-height class="ma-0 pa-0">
 			<v-layout row wrap fill-height>
-				<v-img
+
+								<v-img
 					:height="[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*2/3 : (this.windowSize.y)]"
 					:src="asset + services.image1.path"
 				>
 					<v-container fill-height>
 						<v-layout align-center justify-center row fill-height>
 							<v-layout column class="white--text text-center">
-								<div class="text">
+							
 									<v-img
 										style="margin: auto;"
-										:width="this.resize.svgSize"
+										:width="[$vuetify.breakpoint.smAndDown ? '40%' : '30%']"
 										:src="asset + services.image1_logo.path"
 									></v-img>
-									<p :class="this.resize.headline  + ' font-weight-bold'">{{services.image1_text}}</p>
-								</div>
+									<v-card>
+									<p
+										:class="this.resize.headline + ' font-weight-bold'"
+										:style="[$vuetify.breakpoint.smAndDown ? 'line-height: 40px;' : 'line-height: 80px;']  +'text-align:center;' "
+									>{{services.title}}</p>
+										
+									</v-card>
+								
+								
 							</v-layout>
 						</v-layout>
+								<v-card class='display-1'>
+									
+								
+									</v-card>
 					</v-container>
 				</v-img>
+				
 			</v-layout>
 		</v-container>
 		<!--END-->
@@ -32,7 +45,7 @@
 			<v-layout row wrap>
 				<!--BLOCK LEFT WITH TEXT-->
 				<v-flex lg6 sm12>
-					<div style="background-color:#FFE082; height: 100%;">
+					<div style=" height: 100%;" class='success lighten-2'>
 						<v-container>
 							<v-container fill-height>
 								<v-layout align-center justify-center row fill-height>
@@ -66,7 +79,7 @@
 				<!--END-->
 				<!--BLOCK RIGHT WITH TEXT-->
 				<v-flex lg6 sm12>
-					<div style="background-color: #AED581; height: 100%;">
+					<div  style=" height: 100%;" class='warning lighten-2'>
 						<v-container>
 							<v-container fill-height>
 								<v-layout align-center justify-center row fill-height>
@@ -90,7 +103,7 @@
 			<v-layout row wrap>
 				<!--BLOCK LEFT WITH TEXT-->
 				<v-flex lg6 sm12>
-					<div style="background-color: #ffffff; height: 100%">
+					<div  style=" height: 100%;" class='accent lighten-2'>
 						<v-container>
 							<v-container fill-height>
 								<v-layout align-center justify-center row fill-height>
@@ -124,7 +137,7 @@
 				<!--END-->
 				<!--BLOCK RIGHT WITH TEXT-->
 				<v-flex lg6 sm12>
-					<div style="background-color: #000000; height: 100%;">
+					<div  style=" height: 100%;" class='primary lighen-2'>
 						<v-container>
 							<v-container fill-height>
 								<v-layout align-center justify-center row fill-height>
@@ -148,7 +161,7 @@
 			<v-layout row wrap>
 				<v-flex lg6 sm12>
 					<!--BLOCK LEFT WITH TEXT-->
-					<div style="background-color: #FFE082; height: 100%;">
+					<div  style=" height: 100%;" class='secondary lighten-2'>
 						<v-container>
 							<v-container fill-height>
 								<v-layout align-center justify-center row fill-height>

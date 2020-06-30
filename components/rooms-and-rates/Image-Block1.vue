@@ -9,7 +9,7 @@
 				<!--END-->
 				<!--BLOCK RIGHT WITH TEXT-->
 				<v-flex lg6>
-					<div style="background-color: #636f61; height: 100%;">
+					<div style=" height: 100%;"  class='accent'>
 						<v-container>
 							<v-container fill-height>
 								<v-layout align-center justify-center row fill-height>

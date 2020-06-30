@@ -5,7 +5,7 @@
 			<v-layout row wrap>
 				<v-flex lg6>
 					<!--BLOCK LEFT WITH TEXT-->
-					<div style="background-color: #ffffff; height: 100%;">
+					<div style=" height: 100%;"  class='success'>
 						<v-container
 							
 						>

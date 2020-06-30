@@ -1,18 +1,20 @@
 <template>
 	<div>
 		<v-container fluid fill-height class="ma-0 pa-0">
+	
 			<v-layout row wrap>
 				<v-flex lg6>
-					<div style="background-color: #a6bc71;">
+					<div class='secondary lighten--2'>
 						<v-container
 							:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*3/4 : (this.windowSize.y)]+'px'"
 						>
 							<v-container fill-height>
+				
 								<v-layout align-center justify-center row fill-height>
-									<v-layout column class="text-center" cols="12" tag="h1">
-										<div class="text">
-											<div
-												:class="this.resize.subtitle  + ' font-weight-bold black--text'"
+									<v-layout pa-5 >
+										<div class="display-1">
+											<div 
+												:class="  + ' font-weight-bold black--text'"
 												v-html="props.blocktext"
 											></div>
 											<img
@@ -22,17 +24,20 @@
 											/>
 										</div>
 									</v-layout>
+			
 								</v-layout>
 							</v-container>
 						</v-container>
 					</div>
 				</v-flex>
 				<v-flex lg6>
+					<!-- image -->
 					<v-img :height="(this.windowSize.y)*(2/3)" :src="asset + props.image4.path">
 						<v-container fill-height>
 							<v-layout align-center justify-center row fill-height>
 								<v-layout column class="white--text text-center">
 									<div class="text white--text">
+								
 										<p :class="this.resize.subtitle  + ' font-weight-bold'">{{props.image4_text1}}</p>
 
 										<v-img
@@ -48,12 +53,14 @@
 							</v-layout>
 						</v-container>
 					</v-img>
+					<!-- block -->
 					<v-container :style="'height:'+(this.windowSize.y)/3+'px'">
 						<v-container fill-height>
+
 							<v-layout align-center justify-center row fill-height>
 								<v-layout column class="white--text text-center">
 									<div class="text">
-										<p :class="this.resize.subtitle">{{props.block2_text}}</p>
+										<p :class="this.resize.subtitle" v-html="props.block2_text">{{}}</p>
 									</div>
 								</v-layout>
 							</v-layout>

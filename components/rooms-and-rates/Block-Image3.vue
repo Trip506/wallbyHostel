@@ -4,7 +4,7 @@
 			<v-layout row wrap>
 				<v-flex lg6>
 					<!--BLOCK LEFT WITH TEXT-->
-					<div style="background-color: #b8b07f; height: 100%;">
+					<div style=" height: 100%;"  class='info darken-3'>
 						<v-container>
 							<v-container fill-height>
 								<v-layout align-center justify-center row fill-height>

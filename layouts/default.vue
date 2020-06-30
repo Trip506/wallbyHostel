@@ -2,7 +2,7 @@
 	<v-app>
 		<span v-show="show">
 			<Nav></Nav>
-			<v-toolbar v-if="this.$store.state.pageData[0].title != 'home'">
+			<!-- <v-toolbar v-if="this.$store.state.pageData[0].title != 'home'">
 				<v-container>
 					<v-layout row wrap justify-space-between>
 						<v-flex lg3>
@@ -42,7 +42,8 @@
 						</v-flex>
 					</v-layout>
 				</v-container>
-			</v-toolbar>
+			</v-toolbar> -->
+		
 			<v-dialog v-model="book" max-width="250" transition="dialog-transition">
 				<v-card>
 					<v-card-title primary-title>
@@ -70,20 +71,27 @@
 				<nuxt />
 			</v-content>
 
-			<!--<v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-				<v-list>
-					<v-list-item v-for="(item, i) in nav" :key="i" :to="item.to" router exact>
-						<v-list-item-action>
-							<v-icon color="primary" v-if="item.icon">{{ item.icon }}</v-icon>
-							<v-img height="32" width="24" v-else :src="item.img"></v-img>
-						</v-list-item-action>
-						<v-list-item-content>
-							<v-list-item-title v-text="item.title" />
-						</v-list-item-content>
-					</v-list-item>
-				</v-list>
-			</v-navigation-drawer>-->
-			<!--<BottomNav></BottomNav>-->
+<div style="background-color: black;">
+				<v-btn @click="menu= !menu" small fixed top text right fab v-show="scrollButton">
+					<v-icon color="grey" x-large>mdi-menu</v-icon>
+				</v-btn>
+				<v-container grid-list-lg fluid>
+					<v-layout column align-center justify-center wrap>
+						<v-flex v-for="(item, index) in nav" :key="index" v-if="index < 9" xs12>
+							<nuxt-link :to="item.to">
+								<v-hover>
+									<div
+									style="text-decoration: none;"
+										slot-scope="{ hover }"
+										@click="menu= false"
+										:class="[$vuetify.breakpoint.mdAndDown ? 'headline' : 'display-2']+[hover ? ' white--text' : ' secondary--text'] + ' text--lighten-3 font-weight-bold'"
+									>{{item.title}}</div>
+								</v-hover>
+							</nuxt-link>
+						</v-flex>
+					</v-layout>
+				</v-container>
+			</div>
 			<Footer></Footer>
 		</span>
 

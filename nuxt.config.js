@@ -76,10 +76,10 @@ export default {
     // baseURL: 'http://localhost:8888'
   },
 
-  // server: {
-  //   port: 8000, // default: 3000
-  //   host: '0.0.0.0' // default: localhost
-  // },
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -90,13 +90,13 @@ export default {
       dark: true,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
+          primary: '#000000',
+          accent: '#455660',
+          secondary: '#FDB813',
+          info: '#FED8A7',
+          warning: '#BA5915',
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: '#00853E'
         }
       }
     }

@@ -27,19 +27,14 @@
 			<v-layout row wrap fill-height>
 				<v-flex lg6>
 					<div style="background-color:black;" class="black--text">
-						<v-container
-							:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*1/5 : (this.windowSize.y)/2]+'px'"
-						>
-							<v-container fill-height>
-								<v-layout align-center justify-center row fill-height>
-									<v-layout column class="white--text text-center">
-										<div class="text">
-											<v-img style="margin: auto;" width="60%" :src="asset + props.logo.path"></v-img>
-										</div>
-									</v-layout>
-								</v-layout>
-							</v-container>
-						</v-container>
+			
+					
+								
+								
+											<v-img :src="asset + props.logo.path" contain=""></v-img>
+								
+						
+				
 					</div>
 
 					<v-img
@@ -47,12 +42,15 @@
 						:src="asset + props.image1.path"
 					>
 						<v-container fill-height>
-							<v-layout align-center justify-center row fill-height>
+							<v-layout mt-5 column align-end="" fill-height>
 								<v-layout column class="white--text text-center">
 									<div class="text">
+										<v-card>
+											
 										<p
-											:class="this.resize.lgtext +' text-uppercase font-weight-black secondary--text text--lighten-1'"
+											:class="'display-3 text-uppercase font-weight-black secondary--text text--lighten-1'"
 										>{{props.image1_text}}</p>
+										</v-card>
 									</div>
 								</v-layout>
 							</v-layout>
@@ -61,11 +59,12 @@
 				</v-flex>
 				<v-flex lg6>
 					<div style="background-color:white;" class="black--text">
-						<v-container
+						<v-container class='fill-height'
 							:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*2/3 : (this.windowSize.y)/2]+'px'"
 						>
 							<v-container grid-list-lg>
-								<v-layout align-center justify-center row fill-height mx-5 px-5>
+						
+								<v-layout  justify-center column mt-5  >
 									<v-flex xs12>
 										<p
 											style="text-align:center;"
@@ -76,6 +75,7 @@
 									<v-flex lg6 xs12>
 										<div align="center">
 											<v-btn
+										     	x-large
 												outlined
 												color="black"
 												width="100%"
@@ -91,7 +91,7 @@
 									</v-flex>
 									<v-flex lg6 xs12>
 										<div align="center">
-											<v-btn
+											<v-btn x-large
 												outlined
 												color="black"
 												width="100%"
@@ -111,10 +111,10 @@
 											</v-list>
 										</v-menu>
 									</v-flex>
-									<v-flex xs12></v-flex>
+							
 									<v-flex xs12>
 										<div align="center">
-											<v-btn color="#dfd269" width="100%" @click="book = true">
+											<v-btn color='secondary' x-large width="100%" @click="book = true">
 												<span class="black--text font-weight-bold">{{props.button3}}</span>
 											</v-btn>
 										</div>

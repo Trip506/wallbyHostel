@@ -2,7 +2,7 @@
 	<div>
 		<Splash :props="rooms"></Splash>
 		<BlockImage1 :props="rooms"></BlockImage1>
-		<FullColImage :props="rooms"></FullColImage>
+		<!-- <FullColImage :props="rooms"></FullColImage>m -->
 		<ImageBlock1 :props="rooms"></ImageBlock1>
 		<BlockImage2 :props="rooms"></BlockImage2>
 		<ImageBlock2 :props="rooms"></ImageBlock2>

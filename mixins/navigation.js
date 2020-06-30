@@ -30,7 +30,7 @@ export const Mixin = {
                 },
                 {
                 
-                    title: "Contact",
+                    title: "Book / Contact",
                     to: "/contact"
                 },
  

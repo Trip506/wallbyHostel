@@ -46,7 +46,7 @@
 				<v-flex :class="[props.image6_bool ? 'lg6' : 'xs12']">
 					<v-layout row wrap>
 						<v-flex lg6>
-							<div style="background-color: #ffffff;">
+							<div class="info">
 								<v-container
 									:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)/4 : (this.windowSize.y)/2]+'px'"
 								>
@@ -78,7 +78,7 @@
 									</v-layout>
 								</v-container>
 							</v-img>
-							<div style="background-color: #b7b181;">
+							<div class='success'>
 								<v-container
 									:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*1/6 : (this.windowSize.y)/4]+'px'"
 								>

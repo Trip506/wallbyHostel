@@ -1,8 +1,14 @@
 <template>
 	<div>
 		<v-container>
+		
 			<v-form v-model="valid" ref="form" lazy-validation>
+					<div class='display-2 primary--text'> 
+				Send us a message
+			</div>
+			<div class="display-1 accent--text mb-5"> We'll get back to you as soon as we can</div>
 				<v-text-field
+				
 					label="Your Name"
 					v-model="name"
 					:rules="nameRules"
@@ -52,7 +58,7 @@
 
 				<v-btn
 					x-large
-					color="secondary lighten-2"
+					color="secondary "
 					class="white--text"
 					@click="submit_post"
 					:disabled="!valid"
