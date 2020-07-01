@@ -1,6 +1,6 @@
 <template>
 	<div>
-<v-container fluid fill-height class="ma-0 pa-0">
+		<v-container fluid fill-height class="ma-0 pa-0">
 			<v-layout row wrap>
 				<v-flex lg6>
 					<v-img
@@ -18,9 +18,7 @@
 											width="30%"
 											:src="asset + props.image6_logo.path"
 										></v-img>
-										<p
-											:class="this.resize.subtitle"
-										>{{props.image6_text}}</p>
+										<p :class="this.resize.subtitle">{{props.image6_text}}</p>
 									</div>
 								</v-layout>
 							</v-layout>
@@ -54,9 +52,7 @@
 										<v-layout align-center justify-center row fill-height>
 											<v-layout column class="white--text text-center">
 												<div class="text">
-													<p
-														:class="this.resize.subtitle + ' black--text'"
-													>{{props.block3_text}}</p>
+													<p :class="this.resize.subtitle + ' black--text'">{{props.block3_text}}</p>
 												</div>
 											</v-layout>
 										</v-layout>
@@ -65,36 +61,37 @@
 							</div>
 						</v-flex>
 						<v-flex lg6>
+							<a target="_blank" :href="props.block4_link">
+
 							<v-img :style="'height:'+(this.windowSize.y)/4+'px'">
 								<v-container fill-height>
 									<v-layout align-center justify-center row fill-height>
 										<v-layout column class="white--text text-center">
 											<div class="text">
-												<p
-													:class="this.resize.subtitle"
-												>{{props.block4_text}}</p>
+												<p :class="this.resize.subtitle">{{props.block4_text}}</p>
 											</div>
 										</v-layout>
 									</v-layout>
 								</v-container>
 							</v-img>
-							<div class='success'>
-								<v-container
-									:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*1/6 : (this.windowSize.y)/4]+'px'"
-								>
-									<v-container fill-height>
-										<v-layout align-center justify-center row fill-height>
-											<v-layout column class="white--text text-center">
-												<div class="text">
-													<p
-														:class="this.resize.subtitle"
-													>{{props.block5_text}}</p>
-												</div>
+							</a>
+							<a target="_blank"  :href="props.block5_link">
+								<div class="success">
+									<v-container
+										:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*1/6 : (this.windowSize.y)/4]+'px'"
+									>
+										<v-container fill-height>
+											<v-layout align-center justify-center row fill-height>
+												<v-layout column class="white--text text-center">
+													<div class="text">
+														<p :class="this.resize.subtitle">{{props.block5_text}}</p>
+													</div>
+												</v-layout>
 											</v-layout>
-										</v-layout>
+										</v-container>
 									</v-container>
-								</v-container>
-							</div>
+								</div>
+							</a>
 						</v-flex>
 					</v-layout>
 					<!--	<v-img :height="(this.windowSize.y)/2" :src="asset + props.image7.path">
@@ -145,7 +142,6 @@ export default {
 		return {
 			asset: this.$store.state.assetRoot2
 		};
-	},
-
+	}
 };
 </script>
