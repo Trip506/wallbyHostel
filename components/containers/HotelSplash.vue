@@ -1,23 +1,85 @@
 <template>
 	<div>
-		<v-dialog v-model="book" max-width="250" transition="dialog-transition">
+		<v-dialog v-model="book" max-width="75%" transition="dialog-transition">
 			<v-card>
 				<v-card-title primary-title>
-					<p  >Your Booking:</p>
+					<p>Your Booking:</p>
 				</v-card-title>
 				<v-card-text>
-					<p>
-						Arrival Date:
-						<span class="secondary--text text--lighten-1 font-weight-bold">{{date}}</span>
-					</p>
-					<p>
-						Number of nights:
-						<span class="secondary--text text--lighten-1 font-weight-bold">{{nights}}</span>
-					</p>
+					<v-container grid-list-md>
+						<v-layout row wrap>
+							<v-flex xs12>
+								<v-text-field
+									label="Your Name"
+									v-model="name"
+									:rules="nameRules"
+									:counter="20"
+									value
+									outlined
+									required
+								></v-text-field>
+							</v-flex>
+
+							<v-flex lg6>
+								<v-text-field
+									label="Your Email"
+									v-model="email"
+									:rules="emailRules"
+									value
+									outlined
+									required
+								></v-text-field>
+							</v-flex>
+							<v-flex lg6>
+								<v-text-field
+									label="Your Phonenumber (Not required)"
+									type="phone"
+									v-model="phone"
+									required
+									outlined
+								></v-text-field>
+							</v-flex>
+							<v-flex xs12>
+								<v-select
+									outlined
+									label="Dorm Type"
+									v-model="select"
+									:items="items"
+									:rules="[v => !!v || 'Item is required']"
+									required
+								></v-select>
+							</v-flex>
+							<v-flex xs12>
+								<v-textarea
+									:value="'This is a reservation message by '+this.name+' for a '+this.select+' room. The checkin date is '+this.date+' and the checkout date is '+this.date2+'. For feedback please contact '+this.email+' or '+this.phone+'.'"
+									label="Your Booking"
+									auto-grow
+									outlined
+									readonly
+								></v-textarea>
+							</v-flex>
+							<v-flex xs12>
+								<v-textarea label="Additional message" v-model="message2" auto-grow value outlined></v-textarea>
+							</v-flex>
+						</v-layout>
+					</v-container>
+					<v-checkbox
+						label="I agree for my personal information given here to be store on the site database"
+						v-model="checkbox"
+						:rules="[v => !!v || 'You must agree to continue!']"
+						required
+					></v-checkbox>
+					{{message1}}
 				</v-card-text>
 				<v-card-actions>
 					<v-layout justify-center>
-						<v-btn color="secondary lighten-1">Book Now</v-btn>
+						<v-btn
+							x-large
+							color="secondary "
+							class="white--text"
+							@click="submit_post"
+							:disabled="!valid"
+						>Book Now</v-btn>
 					</v-layout>
 				</v-card-actions>
 				<br />
@@ -27,14 +89,7 @@
 			<v-layout row wrap fill-height>
 				<v-flex lg6>
 					<div style="background-color:black;" class="black--text">
-			
-					
-								
-								
-											<v-img :src="asset + props.logo.path" contain=""></v-img>
-								
-						
-				
+						<v-img :src="asset + props.logo.path" contain></v-img>
 					</div>
 
 					<v-img
@@ -42,14 +97,13 @@
 						:src="asset + props.image1.path"
 					>
 						<v-container fill-height>
-							<v-layout mt-5 column align-end="" fill-height>
+							<v-layout mt-5 column align-end fill-height>
 								<v-layout column class="white--text text-center">
 									<div class="text">
 										<v-card>
-											
-										<p
-											:class="'display-3 text-uppercase font-weight-black secondary--text text--lighten-1'"
-										>{{props.image1_text}}</p>
+											<p
+												:class="'display-3 text-uppercase font-weight-black secondary--text text--lighten-1'"
+											>{{props.image1_text}}</p>
 										</v-card>
 									</div>
 								</v-layout>
@@ -59,62 +113,65 @@
 				</v-flex>
 				<v-flex lg6>
 					<div style="background-color:white;" class="black--text">
-						<v-container class='fill-height'
+						<v-container
+							class="fill-height"
 							:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*2/3 : (this.windowSize.y)/2]+'px'"
 						>
 							<v-container grid-list-lg>
-						
-								<v-layout  justify-center column mt-5  >
+								<v-layout justify-center row mt-5>
 									<v-flex xs12>
 										<p
 											style="text-align:center;"
-											:class="this.resize.headline+' font-weight-bold'">{{props.bookText}}</p>
+											:class="this.resize.headline+' font-weight-bold'"
+										>{{props.bookText}}</p>
 									</v-flex>
 
 									<br />
 									<v-flex lg6 xs12>
 										<div align="center">
 											<v-btn
-										     	x-large
+												x-large
 												outlined
 												color="black"
 												width="100%"
 												@click="datepicker = !datepicker"
 											>{{props.button1}}</v-btn>
 										</div>
-										<v-menu close-on-click="false" bottom v-model="datepicker">
+										<v-menu close-on-click="true" bottom v-model="datepicker">
 											<template v-slot:activator="{ on }">
 												<div v-on="on"></div>
 											</template>
-											<v-date-picker color="secondary lighten-1" v-model="date" light :reactive="true"></v-date-picker>
+											<v-date-picker
+												color="secondary lighten-1"
+												centered
+												v-model="date"
+												light
+												:reactive="true"
+											></v-date-picker>
 										</v-menu>
 									</v-flex>
 									<v-flex lg6 xs12>
 										<div align="center">
-											<v-btn x-large
+											<v-btn
+												x-large
 												outlined
 												color="black"
 												width="100%"
-												@click="daypicker = !daypicker"
+												@click="datepicker2 = !datepicker2"
 											>{{props.button2}}</v-btn>
 										</div>
-										<v-menu close-on-click="false" bottom v-model="daypicker">
+										<v-menu close-on-click="true" bottom v-model="datepicker2" flat>
 											<template v-slot:activator="{ on }">
 												<div v-on="on"></div>
 											</template>
-											<v-list>
-												<v-list-item v-for="(item, index) in 7" :key="index">
-													<v-list-item-title>
-														<v-btn color="white" width="100%" @click="nights = index+1" text>{{ index+1 }}</v-btn>
-													</v-list-item-title>
-												</v-list-item>
-											</v-list>
+
+											<v-date-picker color="secondary lighten-1" v-model="date2" light :reactive="true"></v-date-picker>
 										</v-menu>
 									</v-flex>
-							
+
 									<v-flex xs12>
 										<div align="center">
-											<v-btn color='secondary' x-large width="100%" @click="book = true">
+											<v-btn color="secondary" x-large width="100%" @click="book = true">
 												<span class="black--text font-weight-bold">{{props.button3}}</span>
 											</v-btn>
 										</div>
@@ -154,13 +211,61 @@ export default {
 	props: ["props"],
 	data() {
 		return {
+			valid: true,
 			asset: this.$store.state.assetRoot2,
 			datepicker: false,
-			daypicker: false,
+			datepicker2: false,
 			date: "",
-			nights: "",
-			book: false
+			date2: "",
+			book: false,
+			name: "",
+			nameRules: [
+				v => !!v || "Name is required",
+				v => (v && v.length <= 20) || "Name must be less than 20 characters"
+			],
+			email: "",
+			emailRules: [
+				v => !!v || "E-mail is required",
+				v =>
+					/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+					"E-mail must be valid"
+			],
+			phone: "",
+
+			select: "",
+			items: ["8 Bed Mixed", "4 Bed Mixed", "5 Bed Female", "Private"],
+			message2: "",
+			checkbox: ""
 		};
+	},
+	methods: {
+		async submit_post() {
+			if (this.valid == true) {
+				// Native form submission is not yet supported
+				let form = "book";
+				const ip = await this.$axios.$post(
+					this.$store.state.webRoot2 +
+						"/api/forms/submit/" +
+						form +
+						"?token=" +
+						this.$store.state.bookToken,
+					{
+						form: {
+							name: this.name,
+							email: this.email,
+							phone: this.phone,
+							message1: 'This is a reservation message by '+this.name+' for a '+this.select+' room. The checkin date is '+this.date+' and the checkout date is '+this.date2+'. For feedback please contact '+this.email+' or '+this.phone+'.',
+							message2: this.message2,
+							checkbox: this.checkbox
+						}
+					},
+				);
+			} else {
+			}
+		},
+		clear() {
+			this.$refs.form.reset();
+		}
 	}
 };
 </script>
