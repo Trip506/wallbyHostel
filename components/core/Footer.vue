@@ -1,57 +1,136 @@
 <template>
 	<div>
-		<v-dialog v-model="footerBook" max-width="250" transition="dialog-transition">
-				<v-card>
-					<v-card-title primary-title>
-						<p>Your Booking:</p>
-					</v-card-title>
-					<v-card-text>
-						<p>
-							Arrival Date:
-							<span class="secondary--text text--lighten-1 font-weight-bold">{{footerDate}}</span>
-						</p>
-						<p>
-							Number of nights:
-							<span class="secondary--text text--lighten-1 font-weight-bold">{{footerNights}}</span>
-						</p>
-					</v-card-text>
-					<v-card-actions>
-						<v-layout justify-center>
-							<v-btn x-large color="secondary lighten-1">Book Now</v-btn>
-						</v-layout>
-					</v-card-actions>
-					<br />
-				</v-card>
-			</v-dialog>
-		<footer class="v-footer v-sheet primary " >
+		<v-dialog v-model="footerBook" max-width="75%" transition="dialog-transition">
+			<v-card>
+				<v-card-title primary-title>
+					<p>Your Booking:</p>
+				</v-card-title>
+				<v-card-text>
+					<v-form ref="form" v-model="form">
+						<v-container grid-list-md>
+							<v-layout row wrap>
+								<v-flex xs12>
+									<v-text-field
+										label="Your Name"
+										v-model="name"
+										:rules="nameRules"
+										:counter="20"
+										value
+										outlined
+										required
+									></v-text-field>
+								</v-flex>
+
+								<v-flex lg6>
+									<v-text-field
+										label="Your Email"
+										v-model="email"
+										:rules="emailRules"
+										value
+										outlined
+										required
+									></v-text-field>
+								</v-flex>
+								<v-flex lg6>
+									<v-text-field
+										label="Your Phone number (Optional)"
+										type="phone"
+										v-model="phone"
+										required
+										outlined
+									></v-text-field>
+								</v-flex>
+								<v-flex xs12>
+									<v-select
+										outlined
+										label="Dorm Type"
+										v-model="select"
+										:items="items"
+										:rules="[v => !!v || 'Item is required']"
+										required
+									></v-select>
+								</v-flex>
+								<v-flex xs12>
+									<v-textarea
+										:value="'This is a reservation message by '+this.name+' for a '+this.select+' room. The checkin date is '+this.date+' and the checkout date is '+this.date2+'. For feedback please contact '+ this.email+ [this.phone ? ' or ' + this.phone : ''] +'.'"
+										label="Your Booking"
+										auto-grow
+										outlined
+										readonly
+									></v-textarea>
+								</v-flex>
+								<v-flex xs12>
+									<v-textarea
+										label="Additional message (Optional)"
+										v-model="message2"
+										auto-grow
+										value
+										outlined
+									></v-textarea>
+								</v-flex>
+								<v-flex xs12>
+									<v-checkbox
+										label="I agree for my personal information given here to be store on the site database"
+										v-model="checkbox"
+										:rules="[v => !!v || 'You must agree to continue!']"
+										required
+									></v-checkbox>
+								</v-flex>
+							</v-layout>
+						</v-container>
+					</v-form>
+					{{message1}}
+				</v-card-text>
+				<v-card-actions>
+					<v-layout justify-center>
+						<v-btn
+							x-large
+							color="secondary "
+							class="white--text"
+							@click="submit_post"
+							:disabled="!form"
+						>Book Now</v-btn>
+					</v-layout>
+				</v-card-actions>
+				<br />
+			</v-card>
+		</v-dialog>
+		<footer class="v-footer v-sheet primary">
 			<v-container grid-list-lg>
 				<v-layout row wrap justify-center my-5>
 					<v-flex lg3 xs10>
 						<div align="center">
-							<v-btn x-large outlined color="white" width="100%" @click="footerDatepicker = !footerDatepicker">Arrival date</v-btn>
+							<v-btn
+								x-large
+								outlined
+								color="white"
+								width="100%"
+								@click="footerDatepicker = !footerDatepicker"
+							>Arrival date</v-btn>
 						</div>
 						<v-menu close-on-click="false" bottom v-model="footerDatepicker">
 							<template v-slot:activator="{ on }">
 								<div v-on="on"></div>
 							</template>
-							<v-date-picker color="secondary lighten-1" v-model="footerDate" light :reactive="true"></v-date-picker>
+							<v-date-picker color="secondary lighten-1" v-model="date" light :reactive="true"></v-date-picker>
 						</v-menu>
 					</v-flex>
 					<v-flex lg3 xs10>
 						<div align="center">
-							<v-btn x-large outlined color="white" width="100%" @click="footerDaypicker = !footerDaypicker">No of nights</v-btn>
+							<v-btn
+								x-large
+								outlined
+								color="white"
+								width="100%"
+								@click="footerDatepicker2 = !footerDatepicker2"
+							>Checkout date</v-btn>
 						</div>
-						<v-menu close-on-click="false" bottom v-model="footerDaypicker">
+						<v-menu close-on-click="true" bottom v-model="footerDatepicker2">
 							<template v-slot:activator="{ on }">
 								<div v-on="on"></div>
 							</template>
-							<v-list>
-								<v-list-item v-for="(item, index) in 7" :key="index">
-									<v-list-item-title>
-										<v-btn  color="white" width="100%" @click="footerNights = index+1" text>{{ index+1 }}</v-btn>
-									</v-list-item-title>
-								</v-list-item>
-							</v-list>
+
+							<v-date-picker color="secondary lighten-1" v-model="date2" light :reactive="true"></v-date-picker>
 						</v-menu>
 					</v-flex>
 					<v-flex lg3 xs10>
@@ -84,7 +163,7 @@
 							</v-container>
 						</v-container>
 					</div>
-				</v-flex> 
+				</v-flex>
 				<v-flex lg6>
 					<div class="info">
 						<v-container
@@ -168,12 +247,37 @@ export default {
 				x: 0,
 				y: 0
 			},
+			valid: false,
+			form: false,
 			footer: this.$store.state.footerData,
 			footerDatepicker: false,
-			footerDaypicker: false,
-			footerDate: "",
-			footerNights: "",
-			footerBook: false
+			footerDatepicker2: false,
+			date: "",
+			date2: "",
+			footerBook: false,
+			name: "",
+			nameRules: [
+				v => !!v || "Name is required",
+				v => (v && v.length <= 20) || "Name must be less than 20 characters"
+			],
+			email: "",
+			emailRules: [
+				v => !!v || "E-mail is required",
+				v =>
+					/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+					"E-mail must be valid"
+			],
+			phone: "",
+			phoneRules: [
+				v =>
+					/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+					"Phone number must be valid"
+			],
+			select: "",
+			items: ["8 Bed Mixed", "4 Bed Mixed", "5 Bed Female", "Private"],
+			message1: "",
+			message2: "",
+			checkbox: ""
 		};
 	},
 	middleware: "businessDetails",
@@ -187,6 +291,42 @@ export default {
 	methods: {
 		onResize() {
 			this.windowSize = { x: window.innerWidth, y: window.innerHeight };
+		},
+		async submit_post() {
+			if (this.form == true) {
+				// Native form submission is not yet supported
+				let form = "book";
+				const ip = await this.$axios.$post(
+					this.$store.state.webRoot2 +
+						"/api/forms/submit/" +
+						form +
+						"?token=" +
+						this.$store.state.bookToken,
+					{
+						form: {
+							name: this.name,
+							email: this.email,
+							phone: this.phone,
+							bookingMessage:
+								"This is a reservation message by " +
+								this.name +
+								" for a " +
+								this.select +
+								" room. The checkin date is " +
+								this.date +
+								" and the checkout date is " +
+								this.date2 +
+								". For feedback please contact " +
+								this.email +
+								[this.phone ? " or " + this.phone : ""] +
+								".",
+							message2: this.message2,
+
+						}
+					}
+				);
+			} else {
+			}
 		}
 	},
 	mounted() {

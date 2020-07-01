@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-container fluid fill-height class="ma-0 pa-0" >
+		<v-container fluid fill-height class="ma-0 pa-0">
 			<v-layout row wrap fill-height>
 				<v-layout align-center justify-center row fill-height>
 					<v-layout column class="white--text text-center">
@@ -15,13 +15,16 @@
 						>{{props.section2_subtitle}}</p>
 						<br />
 						<div class="text">
-							<div v-html="props.section2_text"
-								:class="this.resize.text+ ' font-weight-bold '"
-								style="text-align:center; "
-							></div>
+							<v-container grid-list-xs>
+								<div
+									v-html="props.section2_text"
+									:class="this.resize.text+ ' font-weight-bold '"
+									style="text-align:center; "
+								></div>
+							</v-container>
 							<!-- <nuxt-link to="/contact">
 							<v-btn class="black--text" color="secondary lighten-1">{{props.section2_buttonText}}</v-btn>
-							</nuxt-link> -->
+							</nuxt-link>-->
 						</div>
 						<br />
 					</v-layout>
@@ -40,9 +43,8 @@ export default {
 	props: ["props"],
 	data() {
 		return {
-			
 			asset: this.$store.state.assetRoot2
 		};
-	},
+	}
 };
 </script>

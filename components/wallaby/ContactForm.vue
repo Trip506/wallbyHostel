@@ -1,14 +1,10 @@
 <template>
 	<div>
 		<v-container>
-		
-			<v-form v-model="valid" ref="form" lazy-validation>
-					<div class='display-2 primary--text'> 
-				Send us a message
-			</div>
-			<div class="display-1 accent--text mb-5"> We'll get back to you as soon as we can</div>
+			<v-form v-model="form" ref="form">
+				<div class="display-2 primary--text">Send us a message</div>
+				<div class="display-1 accent--text mb-5">We'll get back to you as soon as we can</div>
 				<v-text-field
-				
 					label="Your Name"
 					v-model="name"
 					:rules="nameRules"
@@ -45,6 +41,7 @@
 					value
 					light
 					outlined
+					:rules="[v => !!v || 'Item is required']"
 					required
 				></v-textarea>
 
@@ -56,19 +53,21 @@
 					required
 				></v-checkbox>
 
-				<v-btn
-					x-large
-					color="secondary "
-					class="white--text"
-					@click="submit_post"
-					:disabled="!valid"
-				>Send</v-btn>
 				<!-- <v-btn @click="clear">clear</v-btn> -->
 			</v-form>
+			<p class="black--text">{{form}}</p>
+			<v-btn
+				light
+				x-large
+				color="secondary "
+				class="white--text"
+				@click="submit_post"
+				:disabled="!form"
+			>Send</v-btn>
 		</v-container>
 		<v-dialog v-model="dialog" max-width="300" transition="dialog-transition">
 			<v-card>
-				<div v-if="this.valid==true">
+				<div v-if="this.form==true">
 					<v-card-title primary-title>
 						<p>
 							Thanks for contacting us!
@@ -106,6 +105,7 @@ export default {
 	mixins: [Mixin],
 	data: () => ({
 		valid: false,
+		form: false,
 		name: "",
 		nameRules: [
 			v => !!v || "Name is required",
@@ -128,7 +128,7 @@ export default {
 
 	methods: {
 		async submit_post() {
-			if (this.valid == true) {
+			if (this.form == true) {
 				// Native form submission is not yet supported
 				this.error = 0;
 				let form = "contact";
@@ -147,11 +147,10 @@ export default {
 							checkbox: this.checkbox
 						}
 					},
-					(this.dialog = true),
+					(this.dialog = true)
 				);
 			} else {
-				(this.dialog = true),
-				this.error = 1;
+				(this.dialog = true), (this.error = 1);
 			}
 		},
 		clear() {

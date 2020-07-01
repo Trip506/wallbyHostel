@@ -10,9 +10,6 @@
 		<beach :props="beaches"> </beach>
 		<attractions :props="attractions"></attractions>
 
-d
-
-	
 	
 	</div>
 </template>

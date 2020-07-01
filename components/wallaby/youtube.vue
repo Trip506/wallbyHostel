@@ -20,7 +20,7 @@
 							slot-scope="{ hover }"
 							:class="`elevation-${hover ? 12 : 0}`"
 						>
-							<nuxt-link to style="text-decoration:none;">
+							<nuxt-link to style="text-decoration:none;" class="white--text">
 								<v-img :src="'https://i.ytimg.com/vi/'+item.id+'/maxresdefault.jpg'" height="200px"></v-img>
 								<p
 									class="font-weight-bold"

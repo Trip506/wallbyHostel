@@ -1,6 +1,5 @@
 <template lang="">
     <div>
-        <v-container fluid class='ma-0 pa-0'>
 					<v-layout row wrap px-5 py-5>
 				<v-flex xs12>
 				<div class='display-2'>
@@ -22,9 +21,7 @@
 					></iframe>
 				</div>
 			</v-layout>
-		
-		
-		</v-container>
+
     </div>
 </template>
 <script>

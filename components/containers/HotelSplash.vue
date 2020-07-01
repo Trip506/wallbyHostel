@@ -6,69 +6,73 @@
 					<p>Your Booking:</p>
 				</v-card-title>
 				<v-card-text>
-					<v-container grid-list-md>
-						<v-layout row wrap>
-							<v-flex xs12>
-								<v-text-field
-									label="Your Name"
-									v-model="name"
-									:rules="nameRules"
-									:counter="20"
-									value
-									outlined
-									required
-								></v-text-field>
-							</v-flex>
+					<v-form ref="form" v-model="form">
+						<v-container grid-list-md>
+							<v-layout row wrap>
+								<v-flex xs12>
+									<v-text-field
+										label="Your Name"
+										v-model="name"
+										:rules="nameRules"
+										:counter="20"
+										value
+										outlined
+										required
+									></v-text-field>
+								</v-flex>
 
-							<v-flex lg6>
-								<v-text-field
-									label="Your Email"
-									v-model="email"
-									:rules="emailRules"
-									value
-									outlined
-									required
-								></v-text-field>
-							</v-flex>
-							<v-flex lg6>
-								<v-text-field
-									label="Your Phonenumber (Not required)"
-									type="phone"
-									v-model="phone"
-									required
-									outlined
-								></v-text-field>
-							</v-flex>
-							<v-flex xs12>
-								<v-select
-									outlined
-									label="Dorm Type"
-									v-model="select"
-									:items="items"
-									:rules="[v => !!v || 'Item is required']"
-									required
-								></v-select>
-							</v-flex>
-							<v-flex xs12>
-								<v-textarea
-									:value="'This is a reservation message by '+this.name+' for a '+this.select+' room. The checkin date is '+this.date+' and the checkout date is '+this.date2+'. For feedback please contact '+this.email+' or '+this.phone+'.'"
-									label="Your Booking"
-									auto-grow
-									outlined
-									readonly
-								></v-textarea>
-							</v-flex>
-							<v-flex xs12>
-								<v-textarea label="Additional message" v-model="message2" auto-grow value outlined></v-textarea>
-							</v-flex>
-						</v-layout>
-					</v-container>
-					<v-checkbox
-						label="I agree for my personal information given here to be store on the site database"
-						v-model="checkbox"
-						:rules="[v => !!v || 'You must agree to continue!']"
-						required
-					></v-checkbox>
+								<v-flex lg6>
+									<v-text-field
+										label="Your Email"
+										v-model="email"
+										:rules="emailRules"
+										value
+										outlined
+										required
+									></v-text-field>
+								</v-flex>
+								<v-flex lg6>
+									<v-text-field
+										label="Your Phone number (Optional)"
+										type="phone"
+										v-model="phone"
+										required
+										outlined
+									></v-text-field>
+								</v-flex>
+								<v-flex xs12>
+									<v-select
+										outlined
+										label="Dorm Type"
+										v-model="select"
+										:items="items"
+										:rules="[v => !!v || 'Item is required']"
+										required
+									></v-select>
+								</v-flex>
+								<v-flex xs12>
+									<v-textarea
+										:value="'This is a reservation message by '+this.name+' for a '+this.select+' room. The checkin date is '+this.date+' and the checkout date is '+this.date2+'. For feedback please contact '+ this.email+ [this.phone ? ' or ' + this.phone : ''] +'.'"
+										label="Your Booking"
+										auto-grow
+										outlined
+										readonly
+									></v-textarea>
+								</v-flex>
+								<v-flex xs12>
+									<v-textarea label="Additional message (Optional)" v-model="message2" auto-grow value outlined></v-textarea>
+								</v-flex>
+								<v-flex xs12>
+									<v-checkbox
+										label="I agree for my personal information given here to be store on the site database"
+										v-model="checkbox"
+										:rules="[v => !!v || 'You must agree to continue!']"
+										required
+									></v-checkbox>
+								</v-flex>
+							</v-layout>
+						</v-container>
+					</v-form>
 					{{message1}}
 				</v-card-text>
 				<v-card-actions>
@@ -78,7 +82,7 @@
 							color="secondary "
 							class="white--text"
 							@click="submit_post"
-							:disabled="!valid"
+							:disabled="!form"
 						>Book Now</v-btn>
 					</v-layout>
 				</v-card-actions>
@@ -88,8 +92,8 @@
 		<v-container fluid class="ma-0 pa-0">
 			<v-layout row wrap fill-height>
 				<v-flex lg6>
-					<div style="background-color:black;" class="black--text">
-						<v-img :src="asset + props.logo.path" contain></v-img>
+					<div style="background-color:#fdb813;" class="black--text">
+						<v-img :src="asset + props.logo.path" :height="[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*1/5 : (this.windowSize.y)/2]" contain></v-img>
 					</div>
 
 					<v-img
@@ -211,7 +215,8 @@ export default {
 	props: ["props"],
 	data() {
 		return {
-			valid: true,
+			valid: false,
+			form: false,
 			asset: this.$store.state.assetRoot2,
 			datepicker: false,
 			datepicker2: false,
@@ -231,16 +236,21 @@ export default {
 					"E-mail must be valid"
 			],
 			phone: "",
-
+			phoneRules: [
+				v =>
+					/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+					"Phone number must be valid"
+			],
 			select: "",
 			items: ["8 Bed Mixed", "4 Bed Mixed", "5 Bed Female", "Private"],
+			message1: "",
 			message2: "",
 			checkbox: ""
 		};
 	},
 	methods: {
 		async submit_post() {
-			if (this.valid == true) {
+			if (this.form == true) {
 				// Native form submission is not yet supported
 				let form = "book";
 				const ip = await this.$axios.$post(
@@ -254,11 +264,23 @@ export default {
 							name: this.name,
 							email: this.email,
 							phone: this.phone,
-							message1: 'This is a reservation message by '+this.name+' for a '+this.select+' room. The checkin date is '+this.date+' and the checkout date is '+this.date2+'. For feedback please contact '+this.email+' or '+this.phone+'.',
+							bookingMessage:
+								"This is a reservation message by " +
+								this.name +
+								" for a " +
+								this.select +
+								" room. The checkin date is " +
+								this.date +
+								" and the checkout date is " +
+								this.date2 +
+								". For feedback please contact " +
+								this.email +
+								[this.phone ? " or " + this.phone : ""] +
+								".",
 							message2: this.message2,
-							checkbox: this.checkbox
+
 						}
-					},
+					}
 				);
 			} else {
 			}
