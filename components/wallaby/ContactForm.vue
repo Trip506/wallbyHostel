@@ -55,7 +55,6 @@
 
 				<!-- <v-btn @click="clear">clear</v-btn> -->
 			</v-form>
-			<p class="black--text">{{form}}</p>
 			<v-btn
 				light
 				x-large
