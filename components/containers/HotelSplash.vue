@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-dialog v-model="book" max-width="75%" transition="dialog-transition">
+		<v-dialog v-model="book" :max-width="this.resize.bookSize" transition="dialog-transition">
 			<v-card>
 				<v-card-title primary-title>
 					<p>Your Booking:</p>

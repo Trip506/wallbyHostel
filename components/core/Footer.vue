@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-dialog v-model="footerBook" max-width="75%" transition="dialog-transition">
+	<v-dialog v-model="footerBook" :max-width="[$vuetify.breakpoint.smAndDown ? '100%' : '75%']" transition="dialog-transition">
 			<v-card>
 				<v-card-title primary-title>
 					<p>Your Booking:</p>
