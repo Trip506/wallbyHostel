@@ -6,7 +6,7 @@
 				<v-flex lg6>
 					<div class='secondary lighten--2'>
 						<v-container
-							:style="'height:'+[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*3/4 : (this.windowSize.y)]+'px'"
+							:style="'height:'+[$vuetify.breakpoint.smAndDown ? '100%' : (this.windowSize.y)]+'px'"
 						>
 							<v-container fill-height>
 				
