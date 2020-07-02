@@ -323,7 +323,11 @@ export default {
 							message2: this.message2,
 
 						}
-					}
+					},
+					(this.footerBook = false),
+					this.$refs.form.reset(),
+					(this.date = ""),
+					(this.date2 = "")
 				);
 			} else {
 			}

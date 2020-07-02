@@ -60,7 +60,13 @@
 									></v-textarea>
 								</v-flex>
 								<v-flex xs12>
-									<v-textarea label="Additional message (Optional)" v-model="message2" auto-grow value outlined></v-textarea>
+									<v-textarea
+										label="Additional message (Optional)"
+										v-model="message2"
+										auto-grow
+										value
+										outlined
+									></v-textarea>
 								</v-flex>
 								<v-flex xs12>
 									<v-checkbox
@@ -93,7 +99,11 @@
 			<v-layout row wrap fill-height>
 				<v-flex lg6>
 					<div style="background-color:#fdb813;" class="black--text">
-						<v-img :src="asset + props.logo.path" :height="[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*1/5 : (this.windowSize.y)/2]" contain></v-img>
+						<v-img
+							:src="asset + props.logo.path"
+							:height="[$vuetify.breakpoint.smAndDown ? (this.windowSize.y)*1/5 : (this.windowSize.y)/2]"
+							contain
+						></v-img>
 					</div>
 
 					<v-img
@@ -241,7 +251,7 @@ export default {
 					/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
 					"Phone number must be valid"
 			],
-			select: "",
+			select: null,
 			items: ["8 Bed Mixed", "4 Bed Mixed", "5 Bed Female", "Private"],
 			message1: "",
 			message2: "",
@@ -277,10 +287,13 @@ export default {
 								this.email +
 								[this.phone ? " or " + this.phone : ""] +
 								".",
-							message2: this.message2,
-
+							message2: this.message2
 						}
-					}
+					},
+					(this.book = false),
+					this.$refs.form.reset(),
+					(this.date = ""),
+					(this.date2 = "")
 				);
 			} else {
 			}
