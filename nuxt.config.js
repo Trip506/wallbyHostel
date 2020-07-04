@@ -29,6 +29,7 @@ export default {
 
   env: {
     collectionToken: "641a6e0c88f94f7d2adadd184752e1",
+    collectionBarsToken: "0a04241da895b13a2bd89b5b163ffd",
     pagesToken: "7d7d15f4fa6c768e39016bce4cf96f"
   },
 

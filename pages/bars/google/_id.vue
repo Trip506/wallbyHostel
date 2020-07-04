@@ -4,6 +4,8 @@
 			<h1>{{bar.title}}</h1>
 			<h2>{{bar.categoryName}}</h2>
 
+			
+
 			<v-layout row wrap>
 				<!-- Image + Information -->
 				<v-flex xs12 md6>
@@ -58,8 +60,8 @@
 				<!-- {{sortReviews}}
 				{{reviews}}-->
 
-				<div v-for="(item, index) in sortReviews" :key="index"></div>
-				<v-flex xs12 md6 v-if="sortReviews">
+
+				<!-- <v-flex xs12 md6 v-if="sortReviews">
 					<v-layout>
 						<v-flex xs12>
 							<h2>Reviews</h2>
@@ -71,7 +73,7 @@
 							</div>
 						</v-flex>
 					</v-layout>
-				</v-flex>
+				</v-flex> -->
 			</v-layout>
 		</v-container>
 		<BarsList :props="bars"></BarsList>

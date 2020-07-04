@@ -13,6 +13,10 @@
 					</v-layout>
 				</v-container>
 			</v-layout>
+			<v-layout justify-center>
+				
+					<v-btn small  color="secondary darken-2" to='/bars'>See more</v-btn>
+			</v-layout>
 			<br />
 		</v-container>
 	</section>

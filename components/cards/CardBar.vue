@@ -1,7 +1,7 @@
 <template>
 	<v-hover>
 		<v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`" height="100%">
-		<!--	<nuxt-link style="text-decoration:none; color: primary;" :to="'/bars/google/'+props.slug">-->
+			<nuxt-link style="text-decoration:none; color: primary;" :to="'/bars/google/'+props.slug">
 				<v-btn absolute small dark fab top right color="primary ">
 					<!--<v-icon v-if="props.categoryName == 'Restaurant'">mdi-silverware-fork-knife</v-icon>
 					<v-icon v-else color="white">mdi-beer</v-icon>-->
@@ -45,7 +45,7 @@
 
 					{{props.address}}-->
 				</v-card-text>
-			<!--</nuxt-link>-->
+			</nuxt-link>
 		</v-card>
 	</v-hover>
 </template>

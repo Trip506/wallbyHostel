@@ -1,23 +1,16 @@
 <template>
 	<div>
-		<v-img
-			:src="require('@/assets/food/the-munchies.png')"
-			:height="[$vuetify.breakpoint.smAndUp ? '400px' : '200px']"
-		>
-			<template v-slot:placeholder>
-				<v-layout fill-height align-center justify-center ma-0>
-					<v-progress-circular indeterminate color="primary"></v-progress-circular>
-				</v-layout>
-			</template>
-		</v-img>
+
+
 		<v-responsive class="mx-auto" width="56">
 			<v-icon x-large>mdi-food</v-icon>
 		</v-responsive>
 		<Title>
 			<h1
-				class="primary--text main-title"
+				class="secondary--text main-title display-4"
 				style="text-align: center;"
 			>The best bars in {{$store.state.city}}</h1>
+					
 			<h2
 				class="secondary--text"
 				style="text-align: center;"

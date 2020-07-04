@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-dialog v-model="book" :max-width="this.resize.bookSize" transition="dialog-transition">
+		<v-dialog v-model="book"  transition="dialog-transition">
 			<v-card>
 				<v-card-title primary-title>
 					<p>Your Booking:</p>
@@ -136,7 +136,7 @@
 									<v-flex xs12>
 										<p
 											style="text-align:center;"
-											:class="this.resize.headline+' font-weight-bold'"
+											:class="' font-weight-bold'"
 										>{{props.bookText}}</p>
 									</v-flex>
 
@@ -174,6 +174,7 @@
 												@click="datepicker2 = !datepicker2"
 											>{{props.button2}}</v-btn>
 										</div>
+
 										<v-menu close-on-click="true" bottom v-model="datepicker2" flat>
 											<template v-slot:activator="{ on }">
 												<div v-on="on"></div>
