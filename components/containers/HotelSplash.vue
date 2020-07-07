@@ -80,6 +80,7 @@
 						</v-container>
 					</v-form>
 					{{message1}}
+					
 				</v-card-text>
 				<v-card-actions>
 					<v-layout justify-center>
@@ -133,11 +134,11 @@
 						>
 							<v-container grid-list-lg>
 								<v-layout justify-center row mt-5>
-									<v-flex xs12>
-										<p
+									<v-flex xs12 mb-5>
+										<div class="display-2"
 											style="text-align:center;"
 											:class="' font-weight-bold'"
-										>{{props.bookText}}</p>
+										>{{props.bookText}}</div>
 									</v-flex>
 
 									<br />

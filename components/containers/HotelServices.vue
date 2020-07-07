@@ -12,9 +12,9 @@
 				
 								<v-layout align-center justify-center row fill-height>
 									<v-layout pa-5 >
-										<div class="display-1">
+										<div :class="[$vuetify.breakpoint.smAndDown ? 'headline' :  'display-2']">
 											<div 
-												:class="  + ' font-weight-bold black--text'"
+							
 												v-html="props.blocktext"
 											></div>
 											<img

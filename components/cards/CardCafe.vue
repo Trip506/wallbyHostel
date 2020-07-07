@@ -1,7 +1,7 @@
 <template>
 	<v-hover>
 		<v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`" height="100%">
-			<nuxt-link style="text-decoration:none; color: primary;" :to="'/bars/google/'+props.slug">
+			<nuxt-link style="text-decoration:none; color: primary;" :to="'/cafes/'+props.slug">
 				<v-btn absolute small dark fab top right color="primary ">
 					<!--<v-icon v-if="props.categoryName == 'Restaurant'">mdi-silverware-fork-knife</v-icon>
 					<v-icon v-else color="white">mdi-beer</v-icon>-->
@@ -33,8 +33,8 @@
 					</v-layout>
 				</v-sheet>-->
 
-				<v-card-title class='info--text' style="word-break: normal;">{{props.title}}</v-card-title>
-				<v-card-text class='secondary--text'>
+				<v-card-title style="word-break: normal;">{{props.title}}</v-card-title>
+				<v-card-text>
 					<p>
 						<v-icon small>mdi-account-star</v-icon>
 						{{props.categoryName}} with

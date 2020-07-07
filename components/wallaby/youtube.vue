@@ -12,7 +12,7 @@
 		<v-container grid-list-lg>
 			<p :class="this.resize.headline" style="text-align: center;">More Youtube Videos</p>
 			<v-layout row wrap>
-				<v-flex xs12 sm12 md6 lg3 v-for="(item, index) in props.slice(2)" :key="index">
+				<v-flex xs12 sm12 md6 lg3 v-for="(item, index) in props" :key="index" v-if='index>0'>
 					<v-hover>
 						<v-card
 							flat
