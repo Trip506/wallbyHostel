@@ -1,26 +1,26 @@
 export default async function ({ store, $axios, route }) {
-    let collection = "googleplaces_saranda_bars";
+    let collection = "googleplaces_borsh";
     if (route.params.id) {
 
         try {
 
 
             let request1 = await $axios.post(
-                store.state.webRoot2 +
+                store.state.webRoot +
                 "/api/collections/get/" +
                 collection +
                 "?token=" +
-                 process.env.collectionBarsToken, 
-                // "&rspc=1",
+                store.state.collectionsToken +
+                "&rspc=1",
                 { filter: { slug: route.params.id } }
             );
 
             let request2 = await $axios.post(
-                store.state.webRoot2 +
+                store.state.webRoot +
                 "/api/collections/get/" +
                 collection +
                 "?token=" +
-                 process.env.collectionBarsToken,
+                store.state.collectionsToken,
                 {
                     fields: {
                         imageUrls: 1,
@@ -33,7 +33,7 @@ export default async function ({ store, $axios, route }) {
                         location: 1
                     },
                     limit: 20,
-                    sort: { imageUrls: 1 }
+                    sort: { imageUrls: -1 }
                 }
             );
 
@@ -52,12 +52,12 @@ export default async function ({ store, $axios, route }) {
         try {
             return await $axios
                 .$post(
-                    store.state.webRoot2 +
+                    store.state.webRoot +
                     "/api/collections/get/" +
                     collection +
                     "?token=" +
-                     process.env.collectionBarsToken,
-                  //  + "&rspc=1",
+                    store.state.collectionsToken +
+                    "&rspc=1",
                     {
                         fields: {
                             imageUrls: 1,
@@ -69,7 +69,7 @@ export default async function ({ store, $axios, route }) {
                             reviewsCount: 1,
                             location: 1
                         },
-                        sort: { imageUrls: 1 }, limit: 20
+                        sort: { imageUrls: -1 }
                     }
                 )
                 .then(res => {
