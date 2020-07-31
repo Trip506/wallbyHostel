@@ -4,7 +4,7 @@ export const Mixin = {
         nav() {
             return [
                 {
-                    
+
                     title: "Home",
                     to: "/"
                 },
@@ -16,30 +16,30 @@ export const Mixin = {
                     title: "Rooms and Rates",
                     to: "/rooms-and-rates"
                 },
-        
+
                 {
 
-                    title: "Saranda",
+                    title: "About Saranda",
                     to: "/about"
                 },
 
                 {
 
-                    title: "Hostel Location",
+                    title: "Our Location",
                     to: "/location"
                 },
                 {
-                  
+
                     title: "Trips and Events",
                     to: "/experienceSaranda"
                 },
 
                 {
-                
+
                     title: "Contact",
                     to: "/contact"
                 },
- 
+
             ];
         },
     }

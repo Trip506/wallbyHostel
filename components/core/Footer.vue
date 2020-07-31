@@ -15,7 +15,7 @@
 									<p
 										:class="[$vuetify.breakpoint.smAndDown ? 'headline' : 'display-2']"
 									>Rruga Pandeli Bocari 9701, Albania</p>
-									<p :class="[$vuetify.breakpoint.smAndDown ? 'headline' : 'display-2']">+012 345 6789</p>
+									<p :class="[$vuetify.breakpoint.smAndDown ? 'headline' : 'display-2']">+355 693334588</p>
 								</div>
 							</v-layout>
 						</v-container>
@@ -49,15 +49,15 @@
 												:class="[$vuetify.breakpoint.mdAndDown ? 'headline' : 'display-2']+[hover ? ' black--text' : ' white--text'] + ' text--lighten-3'"
 											>Terms & Conditions</div>
 										</v-hover>
-									</nuxt-link> -->
-									<nuxt-link to="">
+									</nuxt-link>-->
+									<nuxt-link to>
 										<v-hover>
 											<div
 												style="text-decoration: none;"
 												slot-scope="{ hover }"
 												@click="menu= false"
 												:class="[$vuetify.breakpoint.mdAndDown ? 'headline' : 'display-2']+[hover ? ' black--text' : ' white--text'] + ' text--lighten-3'"
-											>info@wallabyhostel.com</div>
+											>wallabyhostel@gmail.com</div>
 										</v-hover>
 									</nuxt-link>
 								</div>
