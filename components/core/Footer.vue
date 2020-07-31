@@ -1,6 +1,10 @@
 <template>
 	<div>
-	<v-dialog v-model="footerBook" :max-width="[$vuetify.breakpoint.smAndDown ? '100%' : '75%']" transition="dialog-transition">
+		<v-dialog
+			v-model="footerBook"
+			:max-width="[$vuetify.breakpoint.smAndDown ? '100%' : '75%']"
+			transition="dialog-transition"
+		>
 			<v-card>
 				<v-card-title primary-title>
 					<p>Your Booking:</p>
@@ -157,7 +161,7 @@
 										<p
 											:class="[$vuetify.breakpoint.smAndDown ? 'headline' : 'display-2']"
 										>Rruga Pandeli Bocari 9701, Albania</p>
-										<p :class="[$vuetify.breakpoint.smAndDown ? 'headline' : 'display-2']">+012 345 6789</p>
+										<p :class="[$vuetify.breakpoint.smAndDown ? 'headline' : 'display-2']">+355 693 334 588</p>
 									</div>
 								</v-layout>
 							</v-container>
@@ -199,7 +203,7 @@
 													slot-scope="{ hover }"
 													@click="menu= false"
 													:class="[$vuetify.breakpoint.mdAndDown ? 'headline' : 'display-2']+[hover ? ' black--text' : ' white--text'] + ' text--lighten-3'"
-												>info@wallabyhostel.com</div>
+												>wallabyhostel@gmail.com</div>
 											</v-hover>
 										</nuxt-link>
 									</div>
@@ -320,8 +324,7 @@ export default {
 								this.email +
 								[this.phone ? " or " + this.phone : ""] +
 								".",
-							message2: this.message2,
-
+							message2: this.message2
 						}
 					},
 					(this.footerBook = false),
