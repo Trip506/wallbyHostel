@@ -2,12 +2,12 @@
 	<div>
 		<Splash :props="rooms"></Splash>
 		<BlockImage1 :props="rooms"></BlockImage1>
-		<!-- <FullColImage :props="rooms"></FullColImage>m -->
+
 		<ImageBlock1 :props="rooms"></ImageBlock1>
 		<BlockImage2 :props="rooms"></BlockImage2>
-		<!-- <ImageBlock2 :props="rooms"></ImageBlock2> -->
+		<ImageBlock2 :props="rooms"></ImageBlock2>
 		<BlockImage3 :props="rooms"></BlockImage3>
-		<ImageBlock3 :props="rooms"></ImageBlock3>
+		<!-- <ImageBlock3 :props="rooms"></ImageBlock3> -->
 	</div>
 </template>
 <script>
