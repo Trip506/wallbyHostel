@@ -15,10 +15,10 @@
 						>{{props.section2_subtitle}}</p>
 						<br />
 						<div class="text">
-							<v-container grid-list-xs>
+							<v-container grid-list-lg>
 								<div
 									v-html="props.section2_text"
-									:class="this.resize.text+ ' font-weight-bold '"
+									:class="this.resize.text+ ' font-weight-bold px-2 '"
 									style="text-align:center; "
 								></div>
 							</v-container>
