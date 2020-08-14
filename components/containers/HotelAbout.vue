@@ -15,7 +15,7 @@
 						>{{props.section2_subtitle}}</p>
 						<br />
 						<div class="text">
-							<v-container grid-list-lg>
+							<v-container grid-list-lg style="padding:30px">
 								<div
 									v-html="props.section2_text"
 									:class="this.resize.text+ ' font-weight-bold px-2 '"
@@ -43,8 +43,8 @@ export default {
 	props: ["props"],
 	data() {
 		return {
-			asset: this.$store.state.assetRoot2
+			asset: this.$store.state.assetRoot2,
 		};
-	}
+	},
 };
 </script>
